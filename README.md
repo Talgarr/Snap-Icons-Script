@@ -1,0 +1,1 @@
+# snap-icons-script
