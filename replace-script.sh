@@ -5,6 +5,7 @@ SNAP_PATH=/var/lib/snapd/desktop/applications/
 declare -A alt_icons=(
     ["snap-store"]="software-store.svg"
     ["dbeaver-ce"]="dbeaver.svg"
+    ["p7zip-desktop"]="p7zip.svg"
 )
 
 files=$(find $SNAP_PATH -name "*.desktop" 2>/dev/null)
