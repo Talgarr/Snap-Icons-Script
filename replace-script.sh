@@ -6,6 +6,7 @@ declare -A alt_icons=(
     ["snap-store"]="software-store.svg"
     ["dbeaver-ce"]="dbeaver.svg"
     ["p7zip-desktop"]="p7zip.svg"
+    ["powershell"]="bash.svg"
 )
 
 files=$(find $SNAP_PATH -name "*.desktop" 2>/dev/null)
@@ -15,8 +16,10 @@ do
     poss=$(ls $ICONS_PATH | grep -E "$base_name")
     echo "===================================="
     echo $base_name
-    icon="default.svg"
-    if [ -z "$poss" ]; then
+    icon=""
+
+    if [ -z "$poss" ]
+    then
         echo "No matching icon found for $base_name"
         if [ -n "${alt_icons[$base_name]}" ]; then
             icon=${alt_icons[$base_name]}
@@ -26,6 +29,12 @@ do
     else
         icon=$(echo $poss | head -n 1)
     fi
-    echo $icon
+
+    if [ -z "$icon" ]
+    then
+        continue
+    fi
+
+    echo "$icon"
     sed -i "s|Icon=.*|Icon=$icon|" "$file"
 done
