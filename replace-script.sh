@@ -1,5 +1,5 @@
 #!/bin/bash
-ICONS_PATH=/usr/share/icons/candy-icons/apps/scalable
+ICONS_PATH=~/.icons/candy-icons/apps/scalable
 SNAP_PATH=/var/lib/snapd/desktop/applications/
 LOCAL_PATH=~/.local/share/applications
 
@@ -35,5 +35,5 @@ for file in $files; do
     fi
 
     echo "$icon"
-    sed "s|Icon=.*|Icon=$icon|" "$file" >"$LOCAL_PATH/$bname"
+    sed "s|Icon=.*|Icon=$ICONS_PATH/$icon|" "$file" >"$LOCAL_PATH/$bname"
 done
