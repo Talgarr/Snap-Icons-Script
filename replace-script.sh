@@ -34,6 +34,7 @@ for file in $files; do
         continue
     fi
 
-    echo "$icon"
-    sed "s|Icon=.*|Icon=$ICONS_PATH/$icon|" "$file" >"$LOCAL_PATH/$bname"
+    icon_name=$(basename "$icon" .svg)
+    echo "$icon_name"
+    sed "s|Icon=.*|Icon=$icon_name|" "$file" >"$LOCAL_PATH/$bname"
 done
